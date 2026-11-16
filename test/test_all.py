@@ -61,6 +61,24 @@ if __name__ == "__main__":
     collect_files("glTF-Sample-Models/2.0/", ".gltf", "test_write")
     collect_files("glTF-Sample-Models/2.0/", ".glb", "test_write_glb")
 
+    # Boundary-validation matrix: malformed samples must be rejected with a
+    # cgltf error (not crash under ASAN), valid samples must keep parsing.
+    with open("malformed/manifest.txt") as manifest:
+        for line in manifest:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            name, expect = line.split()
+            file_path = os.path.join("malformed", name)
+            num_tested = num_tested + 1
+            print("### test_malformed " + file_path + " " + expect)
+            result = os.system("{0} \"{1}\" {2}".format(get_executable_path("test_malformed"), file_path, expect))
+            print("### Result: " + str(result) + "\n")
+            if result != 0:
+                num_errors = num_errors + 1
+                print("Error.")
+                sys.exit(1)
+
     result = os.system(get_executable_path("test_math"))
     if result != 0:
         num_errors = num_errors + 1

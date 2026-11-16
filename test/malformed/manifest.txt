@@ -1,0 +1,23 @@
+# <file> <ok|error> — expected outcome of parse + load_buffers + validate
+accessor_offset_misaligned.glb error
+accessor_offset_misaligned_2.glb error
+accessor_overflow.glb error
+attr_offset_not_multiple_of_4.glb error
+sparse_overflow.glb error
+sparse_values_misaligned.glb error
+stride_not_multiple_of_4.glb error
+stride_too_large.glb error
+stride_too_small.glb error
+valid_accessor_even_offset.glb ok
+valid_baseline.glb ok
+valid_stride_max.glb ok
+valid_view_odd_offset.glb ok
+view_byteoffset_oob.glb error
+view_offset_misaligned.glb error
+view_oob_accessor.glb error
+view_oob_data_uri.gltf error
+view_oob_external.gltf error
+view_oob_mesh_indices.glb error
+view_oob_sparse_indices.glb error
+view_oob_sparse_values.glb error
+view_overflow.glb error

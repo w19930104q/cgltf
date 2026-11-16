@@ -1112,6 +1112,8 @@ static void cgltf_default_file_release(const struct cgltf_memory_options* memory
 
 static cgltf_result cgltf_parse_json(cgltf_options* options, const uint8_t* json_chunk, cgltf_size size, cgltf_data** out_data);
 
+static cgltf_result cgltf_validate_buffer_views(cgltf_data* data);
+
 cgltf_result cgltf_parse(const cgltf_options* options, const void* data, cgltf_size size, cgltf_data** out_data)
 {
 	if (size < GlbHeaderSize)
@@ -1547,6 +1549,17 @@ cgltf_result cgltf_load_buffers(const cgltf_options* options, cgltf_data* data, 
 		}
 	}
 
+	/* Now that every buffer has been loaded, check bufferView bounds so that
+	 * out-of-range views are reported here even when the application never
+	 * calls cgltf_validate; this keeps later buffer reads in bounds. */
+	{
+		cgltf_result view_result = cgltf_validate_buffer_views(data);
+		if (view_result != cgltf_result_success)
+		{
+			return view_result;
+		}
+	}
+
 	return cgltf_result_success;
 }
 
@@ -1594,63 +1607,54 @@ static cgltf_size cgltf_calc_index_bound(cgltf_buffer_view* buffer_view, cgltf_s
 #define CGLTF_ASSERT_IF(cond, result) if (cond) return result;
 #endif
 
-cgltf_result cgltf_validate(cgltf_data* data)
+/* Returns 1 if a + b overflows the address-sized size type. */
+static int cgltf_add_overflow(cgltf_size a, cgltf_size b)
 {
-	for (cgltf_size i = 0; i < data->accessors_count; ++i)
-	{
-		cgltf_accessor* accessor = &data->accessors[i];
+	return a > (cgltf_size)(-1) - b;
+}
 
-		CGLTF_ASSERT_IF(data->accessors[i].component_type == cgltf_component_type_invalid, cgltf_result_invalid_gltf);
-		CGLTF_ASSERT_IF(data->accessors[i].type == cgltf_type_invalid, cgltf_result_invalid_gltf);
+/* Returns 1 if a * b overflows the address-sized size type. */
+static int cgltf_mul_overflow(cgltf_size a, cgltf_size b)
+{
+	return b != 0 && a > (cgltf_size)(-1) / b;
+}
 
-		cgltf_size element_size = cgltf_calc_size(accessor->type, accessor->component_type);
-
-		if (accessor->buffer_view)
-		{
-			cgltf_size req_size = accessor->offset + accessor->stride * (accessor->count - 1) + element_size;
-
-			CGLTF_ASSERT_IF(accessor->buffer_view->size < req_size, cgltf_result_data_too_short);
-		}
-
-		if (accessor->is_sparse)
-		{
-			cgltf_accessor_sparse* sparse = &accessor->sparse;
-
-			cgltf_size indices_component_size = cgltf_component_size(sparse->indices_component_type);
-			cgltf_size indices_req_size = sparse->indices_byte_offset + indices_component_size * sparse->count;
-			cgltf_size values_req_size = sparse->values_byte_offset + element_size * sparse->count;
-
-			CGLTF_ASSERT_IF(sparse->indices_buffer_view->size < indices_req_size ||
-							sparse->values_buffer_view->size < values_req_size, cgltf_result_data_too_short);
-
-			CGLTF_ASSERT_IF(sparse->indices_component_type != cgltf_component_type_r_8u &&
-							sparse->indices_component_type != cgltf_component_type_r_16u &&
-							sparse->indices_component_type != cgltf_component_type_r_32u, cgltf_result_invalid_gltf);
-
-			if (sparse->indices_buffer_view->buffer->data)
-			{
-				cgltf_size index_bound = cgltf_calc_index_bound(sparse->indices_buffer_view, sparse->indices_byte_offset, sparse->indices_component_type, sparse->count);
-
-				CGLTF_ASSERT_IF(index_bound >= accessor->count, cgltf_result_data_too_short);
-			}
-		}
-	}
-
+/* Checks every bufferView against the buffer it references: range, byteStride
+ * and meshopt compression limits. Called from cgltf_validate and at the end of
+ * cgltf_load_buffers so that malformed views are rejected before any buffer
+ * content is dereferenced. */
+static cgltf_result cgltf_validate_buffer_views(cgltf_data* data)
+{
 	for (cgltf_size i = 0; i < data->buffer_views_count; ++i)
 	{
-		cgltf_size req_size = data->buffer_views[i].offset + data->buffer_views[i].size;
+		cgltf_buffer_view* view = &data->buffer_views[i];
 
-		CGLTF_ASSERT_IF(data->buffer_views[i].buffer && data->buffer_views[i].buffer->size < req_size, cgltf_result_data_too_short);
-
-		if (data->buffer_views[i].has_meshopt_compression)
+		/* byteStride, when present, must be a multiple of 4 in [4, 252]. */
+		if (view->stride != 0)
 		{
-			cgltf_meshopt_compression* mc = &data->buffer_views[i].meshopt_compression;
+			CGLTF_ASSERT_IF(view->stride < 4 || view->stride > 252 ||
+				view->stride % 4 != 0, cgltf_result_invalid_gltf);
+		}
 
-			CGLTF_ASSERT_IF(mc->buffer == NULL || mc->buffer->size < mc->offset + mc->size, cgltf_result_data_too_short);
+		/* offset + size must not wrap and must stay inside the referenced buffer. */
+		CGLTF_ASSERT_IF(cgltf_add_overflow(view->offset, view->size), cgltf_result_data_too_short);
 
-			CGLTF_ASSERT_IF(data->buffer_views[i].stride && mc->stride != data->buffer_views[i].stride, cgltf_result_invalid_gltf);
+		cgltf_size req_size = view->offset + view->size;
 
-			CGLTF_ASSERT_IF(data->buffer_views[i].size != mc->stride * mc->count, cgltf_result_invalid_gltf);
+		CGLTF_ASSERT_IF(view->buffer && view->buffer->size < req_size, cgltf_result_data_too_short);
+
+		if (view->has_meshopt_compression)
+		{
+			cgltf_meshopt_compression* mc = &view->meshopt_compression;
+
+			CGLTF_ASSERT_IF(mc->buffer == NULL ||
+				cgltf_add_overflow(mc->offset, mc->size) ||
+				mc->buffer->size < mc->offset + mc->size, cgltf_result_data_too_short);
+
+			CGLTF_ASSERT_IF(view->stride && mc->stride != view->stride, cgltf_result_invalid_gltf);
+
+			CGLTF_ASSERT_IF(cgltf_mul_overflow(mc->stride, mc->count) ||
+				view->size != mc->stride * mc->count, cgltf_result_invalid_gltf);
 
 			CGLTF_ASSERT_IF(mc->mode == cgltf_meshopt_compression_mode_invalid, cgltf_result_invalid_gltf);
 
@@ -1665,6 +1669,105 @@ cgltf_result cgltf_validate(cgltf_data* data)
 			CGLTF_ASSERT_IF(mc->filter == cgltf_meshopt_compression_filter_octahedral && mc->stride != 4 && mc->stride != 8, cgltf_result_invalid_gltf);
 			CGLTF_ASSERT_IF(mc->filter == cgltf_meshopt_compression_filter_quaternion && mc->stride != 8, cgltf_result_invalid_gltf);
 			CGLTF_ASSERT_IF(mc->filter == cgltf_meshopt_compression_filter_color && mc->stride != 4 && mc->stride != 8, cgltf_result_invalid_gltf);
+		}
+	}
+
+	return cgltf_result_success;
+}
+
+cgltf_result cgltf_validate(cgltf_data* data)
+{
+	/* Validate bufferViews first: subsequent accessor/mesh checks may
+	 * dereference a view's buffer, so out-of-range or malformed views have
+	 * to be rejected before any buffer data is read. */
+	{
+		cgltf_result view_result = cgltf_validate_buffer_views(data);
+		if (view_result != cgltf_result_success)
+		{
+			return view_result;
+		}
+	}
+
+	for (cgltf_size i = 0; i < data->accessors_count; ++i)
+	{
+		cgltf_accessor* accessor = &data->accessors[i];
+
+		CGLTF_ASSERT_IF(data->accessors[i].component_type == cgltf_component_type_invalid, cgltf_result_invalid_gltf);
+		CGLTF_ASSERT_IF(data->accessors[i].type == cgltf_type_invalid, cgltf_result_invalid_gltf);
+
+		cgltf_size element_size = cgltf_calc_size(accessor->type, accessor->component_type);
+		cgltf_size component_size = cgltf_component_size(accessor->component_type);
+
+		if (accessor->buffer_view)
+		{
+			/* byteOffset, alone and combined with the view offset, must be a
+			 * multiple of the component size (glTF 2.0 data alignment). The
+			 * combined check uses modular arithmetic so it cannot wrap. */
+			CGLTF_ASSERT_IF(component_size != 0 && accessor->offset % component_size != 0, cgltf_result_invalid_gltf);
+			CGLTF_ASSERT_IF(component_size != 0 &&
+				(accessor->buffer_view->offset % component_size + accessor->offset % component_size) % component_size != 0,
+				cgltf_result_invalid_gltf);
+
+			/* Compute offset + stride * (count - 1) + element_size without
+			 * wrapping; a wrapping window previously bypassed the bounds
+			 * check and led to out-of-bounds reads. */
+			cgltf_size req_size = accessor->offset;
+
+			if (accessor->count != 0)
+			{
+				CGLTF_ASSERT_IF(cgltf_mul_overflow(accessor->stride, accessor->count - 1), cgltf_result_data_too_short);
+				CGLTF_ASSERT_IF(cgltf_add_overflow(req_size, accessor->stride * (accessor->count - 1)), cgltf_result_data_too_short);
+
+				req_size += accessor->stride * (accessor->count - 1);
+			}
+
+			CGLTF_ASSERT_IF(cgltf_add_overflow(req_size, element_size), cgltf_result_data_too_short);
+
+			req_size += element_size;
+
+			CGLTF_ASSERT_IF(accessor->buffer_view->size < req_size, cgltf_result_data_too_short);
+		}
+
+		if (accessor->is_sparse)
+		{
+			cgltf_accessor_sparse* sparse = &accessor->sparse;
+
+			CGLTF_ASSERT_IF(sparse->count == 0, cgltf_result_invalid_gltf);
+			CGLTF_ASSERT_IF(sparse->count > accessor->count, cgltf_result_invalid_gltf);
+
+			cgltf_size indices_component_size = cgltf_component_size(sparse->indices_component_type);
+
+			/* Sparse indices/values byteOffsets must match the component alignment. */
+			CGLTF_ASSERT_IF(indices_component_size != 0 &&
+				sparse->indices_byte_offset % indices_component_size != 0, cgltf_result_invalid_gltf);
+			CGLTF_ASSERT_IF(component_size != 0 &&
+				sparse->values_byte_offset % component_size != 0, cgltf_result_invalid_gltf);
+
+			/* Compute the required view sizes without wrapping. */
+			CGLTF_ASSERT_IF(cgltf_mul_overflow(indices_component_size, sparse->count) ||
+				cgltf_add_overflow(sparse->indices_byte_offset, indices_component_size * sparse->count), cgltf_result_data_too_short);
+			CGLTF_ASSERT_IF(cgltf_mul_overflow(element_size, sparse->count) ||
+				cgltf_add_overflow(sparse->values_byte_offset, element_size * sparse->count), cgltf_result_data_too_short);
+
+			cgltf_size indices_req_size = sparse->indices_byte_offset + indices_component_size * sparse->count;
+			cgltf_size values_req_size = sparse->values_byte_offset + element_size * sparse->count;
+
+			CGLTF_ASSERT_IF(sparse->indices_buffer_view == NULL ||
+							sparse->values_buffer_view == NULL ||
+							sparse->indices_buffer_view->size < indices_req_size ||
+							sparse->values_buffer_view->size < values_req_size, cgltf_result_data_too_short);
+
+			CGLTF_ASSERT_IF(sparse->indices_component_type != cgltf_component_type_r_8u &&
+							sparse->indices_component_type != cgltf_component_type_r_16u &&
+							sparse->indices_component_type != cgltf_component_type_r_32u, cgltf_result_invalid_gltf);
+
+			if (sparse->indices_buffer_view->buffer &&
+				sparse->indices_buffer_view->buffer->data)
+			{
+				cgltf_size index_bound = cgltf_calc_index_bound(sparse->indices_buffer_view, sparse->indices_byte_offset, sparse->indices_component_type, sparse->count);
+
+				CGLTF_ASSERT_IF(index_bound >= accessor->count, cgltf_result_data_too_short);
+			}
 		}
 	}
 
@@ -1694,6 +1797,11 @@ cgltf_result cgltf_validate(cgltf_data* data)
 			for (cgltf_size k = 0; k < data->meshes[i].primitives[j].attributes_count; ++k)
 			{
 				CGLTF_ASSERT_IF(data->meshes[i].primitives[j].attributes[k].data->count != first->count, cgltf_result_invalid_gltf);
+
+				/* Vertex attribute elements must be 4-byte aligned inside the
+				 * bufferView (glTF 2.0 data alignment). */
+				CGLTF_ASSERT_IF(data->meshes[i].primitives[j].attributes[k].data->buffer_view &&
+					data->meshes[i].primitives[j].attributes[k].data->offset % 4 != 0, cgltf_result_invalid_gltf);
 			}
 
 			for (cgltf_size k = 0; k < data->meshes[i].primitives[j].targets_count; ++k)
@@ -1714,7 +1822,8 @@ cgltf_result cgltf_validate(cgltf_data* data)
 			CGLTF_ASSERT_IF(indices && indices->type != cgltf_type_scalar, cgltf_result_invalid_gltf);
 			CGLTF_ASSERT_IF(indices && indices->stride != cgltf_component_size(indices->component_type), cgltf_result_invalid_gltf);
 
-			if (indices && indices->buffer_view && indices->buffer_view->buffer->data)
+			if (indices && indices->buffer_view && indices->buffer_view->buffer &&
+				indices->buffer_view->buffer->data)
 			{
 				cgltf_size index_bound = cgltf_calc_index_bound(indices->buffer_view, indices->offset, indices->component_type, indices->count);
 
@@ -2337,7 +2446,7 @@ const uint8_t* cgltf_buffer_view_data(const cgltf_buffer_view* view)
 	if (view->data)
 		return (const uint8_t*)view->data;
 
-	if (!view->buffer->data)
+	if (!view->buffer || !view->buffer->data)
 		return NULL;
 
 	const uint8_t* result = (const uint8_t*)view->buffer->data;

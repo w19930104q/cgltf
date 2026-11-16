@@ -1,0 +1,1 @@
+/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang++ -fsanitize=address -Xlinker --dependency-file=CMakeFiles/test_write_glb.dir/link.d CMakeFiles/test_write_glb.dir/test_write_glb.cpp.o -o test_write_glb

@@ -1,0 +1,1875 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/tmp/tools/root/usr/bin/uname"
+      - "/home/liiing/.local/bin/uname"
+      - "/usr/local/sbin/uname"
+      - "/usr/local/bin/uname"
+      - "/usr/sbin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineSystem.cmake:218 (message)"
+      - "CMakeLists.txt"
+    message: |
+      The system is: Linux - 6.18.33.1-microsoft-standard-WSL2 - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeUnixFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gmake"
+      - "make"
+      - "smake"
+    candidate_directories:
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    found: "/tmp/tools/root/usr/bin/gmake"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompiler.cmake:73 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:64 (_cmake_find_compiler)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER"
+    description: "C compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang"
+    candidate_directories:
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    found: "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/"
+    found: "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is Clang, found in:
+        /home/liiing/feedback/uid21643/test/build/CMakeFiles/4.4.5/CompilerIdC/a.out
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ar"
+      - "ar"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ar"
+      - "/tmp/tools/root/usr/bin/llvm-ar"
+      - "/home/liiing/.local/bin/llvm-ar"
+      - "/usr/local/sbin/llvm-ar"
+      - "/usr/local/bin/llvm-ar"
+      - "/usr/sbin/llvm-ar"
+      - "/usr/bin/llvm-ar"
+      - "/sbin/llvm-ar"
+      - "/bin/llvm-ar"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/ar"
+      - "/tmp/tools/root/usr/bin/ar"
+      - "/home/liiing/.local/bin/ar"
+      - "/usr/local/sbin/ar"
+      - "/usr/local/bin/ar"
+      - "/usr/sbin/ar"
+    found: "/usr/bin/ar"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ranlib"
+      - "ranlib"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ranlib"
+      - "/tmp/tools/root/usr/bin/llvm-ranlib"
+      - "/home/liiing/.local/bin/llvm-ranlib"
+      - "/usr/local/sbin/llvm-ranlib"
+      - "/usr/local/bin/llvm-ranlib"
+      - "/usr/sbin/llvm-ranlib"
+      - "/usr/bin/llvm-ranlib"
+      - "/sbin/llvm-ranlib"
+      - "/bin/llvm-ranlib"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/ranlib"
+      - "/tmp/tools/root/usr/bin/ranlib"
+      - "/home/liiing/.local/bin/ranlib"
+      - "/usr/local/sbin/ranlib"
+      - "/usr/local/bin/ranlib"
+      - "/usr/sbin/ranlib"
+    found: "/usr/bin/ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-strip"
+      - "strip"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-strip"
+      - "/tmp/tools/root/usr/bin/llvm-strip"
+      - "/home/liiing/.local/bin/llvm-strip"
+      - "/usr/local/sbin/llvm-strip"
+      - "/usr/local/bin/llvm-strip"
+      - "/usr/sbin/llvm-strip"
+      - "/usr/bin/llvm-strip"
+      - "/sbin/llvm-strip"
+      - "/bin/llvm-strip"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/strip"
+      - "/tmp/tools/root/usr/bin/strip"
+      - "/home/liiing/.local/bin/strip"
+      - "/usr/local/sbin/strip"
+      - "/usr/local/bin/strip"
+      - "/usr/sbin/strip"
+    found: "/usr/bin/strip"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld.lld"
+      - "ld"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/ld.lld"
+      - "/tmp/tools/root/usr/bin/ld.lld"
+      - "/home/liiing/.local/bin/ld.lld"
+      - "/usr/local/sbin/ld.lld"
+      - "/usr/local/bin/ld.lld"
+      - "/usr/sbin/ld.lld"
+      - "/usr/bin/ld.lld"
+      - "/sbin/ld.lld"
+      - "/bin/ld.lld"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/ld"
+      - "/tmp/tools/root/usr/bin/ld"
+      - "/home/liiing/.local/bin/ld"
+      - "/usr/local/sbin/ld"
+      - "/usr/local/bin/ld"
+      - "/usr/sbin/ld"
+    found: "/usr/bin/ld"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-nm"
+      - "nm"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-nm"
+      - "/tmp/tools/root/usr/bin/llvm-nm"
+      - "/home/liiing/.local/bin/llvm-nm"
+      - "/usr/local/sbin/llvm-nm"
+      - "/usr/local/bin/llvm-nm"
+      - "/usr/sbin/llvm-nm"
+      - "/usr/bin/llvm-nm"
+      - "/sbin/llvm-nm"
+      - "/bin/llvm-nm"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/nm"
+      - "/tmp/tools/root/usr/bin/nm"
+      - "/home/liiing/.local/bin/nm"
+      - "/usr/local/sbin/nm"
+      - "/usr/local/bin/nm"
+      - "/usr/sbin/nm"
+    found: "/usr/bin/nm"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-objdump"
+      - "objdump"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-objdump"
+      - "/tmp/tools/root/usr/bin/llvm-objdump"
+      - "/home/liiing/.local/bin/llvm-objdump"
+      - "/usr/local/sbin/llvm-objdump"
+      - "/usr/local/bin/llvm-objdump"
+      - "/usr/sbin/llvm-objdump"
+      - "/usr/bin/llvm-objdump"
+      - "/sbin/llvm-objdump"
+      - "/bin/llvm-objdump"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/objdump"
+      - "/tmp/tools/root/usr/bin/objdump"
+      - "/home/liiing/.local/bin/objdump"
+      - "/usr/local/sbin/objdump"
+      - "/usr/local/bin/objdump"
+      - "/usr/sbin/objdump"
+    found: "/usr/bin/objdump"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-objcopy"
+      - "objcopy"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-objcopy"
+      - "/tmp/tools/root/usr/bin/llvm-objcopy"
+      - "/home/liiing/.local/bin/llvm-objcopy"
+      - "/usr/local/sbin/llvm-objcopy"
+      - "/usr/local/bin/llvm-objcopy"
+      - "/usr/sbin/llvm-objcopy"
+      - "/usr/bin/llvm-objcopy"
+      - "/sbin/llvm-objcopy"
+      - "/bin/llvm-objcopy"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/objcopy"
+      - "/tmp/tools/root/usr/bin/objcopy"
+      - "/home/liiing/.local/bin/objcopy"
+      - "/usr/local/sbin/objcopy"
+      - "/usr/local/bin/objcopy"
+      - "/usr/sbin/objcopy"
+    found: "/usr/bin/objcopy"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-readelf"
+      - "readelf"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-readelf"
+      - "/tmp/tools/root/usr/bin/llvm-readelf"
+      - "/home/liiing/.local/bin/llvm-readelf"
+      - "/usr/local/sbin/llvm-readelf"
+      - "/usr/local/bin/llvm-readelf"
+      - "/usr/sbin/llvm-readelf"
+      - "/usr/bin/llvm-readelf"
+      - "/sbin/llvm-readelf"
+      - "/bin/llvm-readelf"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/readelf"
+      - "/tmp/tools/root/usr/bin/readelf"
+      - "/home/liiing/.local/bin/readelf"
+      - "/usr/local/sbin/readelf"
+      - "/usr/local/bin/readelf"
+      - "/usr/sbin/readelf"
+    found: "/usr/bin/readelf"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-dlltool"
+      - "dlltool"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-dlltool"
+      - "/tmp/tools/root/usr/bin/llvm-dlltool"
+      - "/home/liiing/.local/bin/llvm-dlltool"
+      - "/usr/local/sbin/llvm-dlltool"
+      - "/usr/local/bin/llvm-dlltool"
+      - "/usr/sbin/llvm-dlltool"
+      - "/usr/bin/llvm-dlltool"
+      - "/sbin/llvm-dlltool"
+      - "/bin/llvm-dlltool"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/dlltool"
+      - "/tmp/tools/root/usr/bin/dlltool"
+      - "/home/liiing/.local/bin/dlltool"
+      - "/usr/local/sbin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/usr/sbin/dlltool"
+      - "/usr/bin/dlltool"
+      - "/sbin/dlltool"
+      - "/bin/dlltool"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-addr2line"
+      - "addr2line"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-addr2line"
+      - "/tmp/tools/root/usr/bin/llvm-addr2line"
+      - "/home/liiing/.local/bin/llvm-addr2line"
+      - "/usr/local/sbin/llvm-addr2line"
+      - "/usr/local/bin/llvm-addr2line"
+      - "/usr/sbin/llvm-addr2line"
+      - "/usr/bin/llvm-addr2line"
+      - "/sbin/llvm-addr2line"
+      - "/bin/llvm-addr2line"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/addr2line"
+      - "/tmp/tools/root/usr/bin/addr2line"
+      - "/home/liiing/.local/bin/addr2line"
+      - "/usr/local/sbin/addr2line"
+      - "/usr/local/bin/addr2line"
+      - "/usr/sbin/addr2line"
+    found: "/usr/bin/addr2line"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/tapi"
+      - "/tmp/tools/root/usr/bin/tapi"
+      - "/home/liiing/.local/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/usr/sbin/tapi"
+      - "/usr/bin/tapi"
+      - "/sbin/tapi"
+      - "/bin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/Compiler/Clang-FindBinUtils.cmake:26 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_AR"
+    description: "LLVM archiver"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ar-21.1"
+      - "llvm-ar-21"
+      - "llvm-ar21"
+      - "llvm-ar"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ar-21.1"
+      - "/tmp/tools/root/usr/bin/llvm-ar-21.1"
+      - "/home/liiing/.local/bin/llvm-ar-21.1"
+      - "/usr/local/sbin/llvm-ar-21.1"
+      - "/usr/local/bin/llvm-ar-21.1"
+      - "/usr/sbin/llvm-ar-21.1"
+      - "/usr/bin/llvm-ar-21.1"
+      - "/sbin/llvm-ar-21.1"
+      - "/bin/llvm-ar-21.1"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ar-21"
+      - "/tmp/tools/root/usr/bin/llvm-ar-21"
+      - "/home/liiing/.local/bin/llvm-ar-21"
+      - "/usr/local/sbin/llvm-ar-21"
+      - "/usr/local/bin/llvm-ar-21"
+      - "/usr/sbin/llvm-ar-21"
+      - "/usr/bin/llvm-ar-21"
+      - "/sbin/llvm-ar-21"
+      - "/bin/llvm-ar-21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ar21"
+      - "/tmp/tools/root/usr/bin/llvm-ar21"
+      - "/home/liiing/.local/bin/llvm-ar21"
+      - "/usr/local/sbin/llvm-ar21"
+      - "/usr/local/bin/llvm-ar21"
+      - "/usr/sbin/llvm-ar21"
+      - "/usr/bin/llvm-ar21"
+      - "/sbin/llvm-ar21"
+      - "/bin/llvm-ar21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ar"
+      - "/tmp/tools/root/usr/bin/llvm-ar"
+      - "/home/liiing/.local/bin/llvm-ar"
+      - "/usr/local/sbin/llvm-ar"
+      - "/usr/local/bin/llvm-ar"
+      - "/usr/sbin/llvm-ar"
+      - "/usr/bin/llvm-ar"
+      - "/sbin/llvm-ar"
+      - "/bin/llvm-ar"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/Compiler/Clang-FindBinUtils.cmake:38 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_RANLIB"
+    description: "Generate index for LLVM archive"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ranlib-21.1"
+      - "llvm-ranlib-21"
+      - "llvm-ranlib21"
+      - "llvm-ranlib"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ranlib-21.1"
+      - "/tmp/tools/root/usr/bin/llvm-ranlib-21.1"
+      - "/home/liiing/.local/bin/llvm-ranlib-21.1"
+      - "/usr/local/sbin/llvm-ranlib-21.1"
+      - "/usr/local/bin/llvm-ranlib-21.1"
+      - "/usr/sbin/llvm-ranlib-21.1"
+      - "/usr/bin/llvm-ranlib-21.1"
+      - "/sbin/llvm-ranlib-21.1"
+      - "/bin/llvm-ranlib-21.1"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ranlib-21"
+      - "/tmp/tools/root/usr/bin/llvm-ranlib-21"
+      - "/home/liiing/.local/bin/llvm-ranlib-21"
+      - "/usr/local/sbin/llvm-ranlib-21"
+      - "/usr/local/bin/llvm-ranlib-21"
+      - "/usr/sbin/llvm-ranlib-21"
+      - "/usr/bin/llvm-ranlib-21"
+      - "/sbin/llvm-ranlib-21"
+      - "/bin/llvm-ranlib-21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ranlib21"
+      - "/tmp/tools/root/usr/bin/llvm-ranlib21"
+      - "/home/liiing/.local/bin/llvm-ranlib21"
+      - "/usr/local/sbin/llvm-ranlib21"
+      - "/usr/local/bin/llvm-ranlib21"
+      - "/usr/sbin/llvm-ranlib21"
+      - "/usr/bin/llvm-ranlib21"
+      - "/sbin/llvm-ranlib21"
+      - "/bin/llvm-ranlib21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ranlib"
+      - "/tmp/tools/root/usr/bin/llvm-ranlib"
+      - "/home/liiing/.local/bin/llvm-ranlib"
+      - "/usr/local/sbin/llvm-ranlib"
+      - "/usr/local/bin/llvm-ranlib"
+      - "/usr/sbin/llvm-ranlib"
+      - "/usr/bin/llvm-ranlib"
+      - "/sbin/llvm-ranlib"
+      - "/bin/llvm-ranlib"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/Compiler/Clang-FindBinUtils.cmake:50 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_CLANG_SCAN_DEPS"
+    description: "`clang-scan-deps` dependency scanner"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "clang-scan-deps-21.1"
+      - "clang-scan-deps-21"
+      - "clang-scan-deps21"
+      - "clang-scan-deps"
+      - "clang-scan-deps-21.1"
+      - "clang-scan-deps-21"
+      - "clang-scan-deps21"
+      - "clang-scan-deps"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps-21.1"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps-21.1"
+      - "/home/liiing/.local/bin/clang-scan-deps-21.1"
+      - "/usr/local/sbin/clang-scan-deps-21.1"
+      - "/usr/local/bin/clang-scan-deps-21.1"
+      - "/usr/sbin/clang-scan-deps-21.1"
+      - "/usr/bin/clang-scan-deps-21.1"
+      - "/sbin/clang-scan-deps-21.1"
+      - "/bin/clang-scan-deps-21.1"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps-21"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps-21"
+      - "/home/liiing/.local/bin/clang-scan-deps-21"
+      - "/usr/local/sbin/clang-scan-deps-21"
+      - "/usr/local/bin/clang-scan-deps-21"
+      - "/usr/sbin/clang-scan-deps-21"
+      - "/usr/bin/clang-scan-deps-21"
+      - "/sbin/clang-scan-deps-21"
+      - "/bin/clang-scan-deps-21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps21"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps21"
+      - "/home/liiing/.local/bin/clang-scan-deps21"
+      - "/usr/local/sbin/clang-scan-deps21"
+      - "/usr/local/bin/clang-scan-deps21"
+      - "/usr/sbin/clang-scan-deps21"
+      - "/usr/bin/clang-scan-deps21"
+      - "/sbin/clang-scan-deps21"
+      - "/bin/clang-scan-deps21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps"
+      - "/home/liiing/.local/bin/clang-scan-deps"
+      - "/usr/local/sbin/clang-scan-deps"
+      - "/usr/local/bin/clang-scan-deps"
+      - "/usr/sbin/clang-scan-deps"
+      - "/usr/bin/clang-scan-deps"
+      - "/sbin/clang-scan-deps"
+      - "/bin/clang-scan-deps"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps-21.1"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps-21.1"
+      - "/home/liiing/.local/bin/clang-scan-deps-21.1"
+      - "/usr/local/sbin/clang-scan-deps-21.1"
+      - "/usr/local/bin/clang-scan-deps-21.1"
+      - "/usr/sbin/clang-scan-deps-21.1"
+      - "/usr/bin/clang-scan-deps-21.1"
+      - "/sbin/clang-scan-deps-21.1"
+      - "/bin/clang-scan-deps-21.1"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps-21"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps-21"
+      - "/home/liiing/.local/bin/clang-scan-deps-21"
+      - "/usr/local/sbin/clang-scan-deps-21"
+      - "/usr/local/bin/clang-scan-deps-21"
+      - "/usr/sbin/clang-scan-deps-21"
+      - "/usr/bin/clang-scan-deps-21"
+      - "/sbin/clang-scan-deps-21"
+      - "/bin/clang-scan-deps-21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps21"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps21"
+      - "/home/liiing/.local/bin/clang-scan-deps21"
+      - "/usr/local/sbin/clang-scan-deps21"
+      - "/usr/local/bin/clang-scan-deps21"
+      - "/usr/sbin/clang-scan-deps21"
+      - "/usr/bin/clang-scan-deps21"
+      - "/sbin/clang-scan-deps21"
+      - "/bin/clang-scan-deps21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps"
+      - "/home/liiing/.local/bin/clang-scan-deps"
+      - "/usr/local/sbin/clang-scan-deps"
+      - "/usr/local/bin/clang-scan-deps"
+      - "/usr/sbin/clang-scan-deps"
+      - "/usr/bin/clang-scan-deps"
+      - "/sbin/clang-scan-deps"
+      - "/bin/clang-scan-deps"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompiler.cmake:54 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCXXCompiler.cmake:69 (_cmake_find_compiler)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER"
+    description: "CXX compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang++"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+    found: "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang++"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/"
+    found: "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is Clang, found in:
+        /home/liiing/feedback/uid21643/test/build/CMakeFiles/4.4.5/CompilerIdCXX/a.out
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/Compiler/Clang-FindBinUtils.cmake:26 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_AR"
+    description: "LLVM archiver"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ar-21.1"
+      - "llvm-ar-21"
+      - "llvm-ar21"
+      - "llvm-ar"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ar-21.1"
+      - "/tmp/tools/root/usr/bin/llvm-ar-21.1"
+      - "/home/liiing/.local/bin/llvm-ar-21.1"
+      - "/usr/local/sbin/llvm-ar-21.1"
+      - "/usr/local/bin/llvm-ar-21.1"
+      - "/usr/sbin/llvm-ar-21.1"
+      - "/usr/bin/llvm-ar-21.1"
+      - "/sbin/llvm-ar-21.1"
+      - "/bin/llvm-ar-21.1"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ar-21"
+      - "/tmp/tools/root/usr/bin/llvm-ar-21"
+      - "/home/liiing/.local/bin/llvm-ar-21"
+      - "/usr/local/sbin/llvm-ar-21"
+      - "/usr/local/bin/llvm-ar-21"
+      - "/usr/sbin/llvm-ar-21"
+      - "/usr/bin/llvm-ar-21"
+      - "/sbin/llvm-ar-21"
+      - "/bin/llvm-ar-21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ar21"
+      - "/tmp/tools/root/usr/bin/llvm-ar21"
+      - "/home/liiing/.local/bin/llvm-ar21"
+      - "/usr/local/sbin/llvm-ar21"
+      - "/usr/local/bin/llvm-ar21"
+      - "/usr/sbin/llvm-ar21"
+      - "/usr/bin/llvm-ar21"
+      - "/sbin/llvm-ar21"
+      - "/bin/llvm-ar21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ar"
+      - "/tmp/tools/root/usr/bin/llvm-ar"
+      - "/home/liiing/.local/bin/llvm-ar"
+      - "/usr/local/sbin/llvm-ar"
+      - "/usr/local/bin/llvm-ar"
+      - "/usr/sbin/llvm-ar"
+      - "/usr/bin/llvm-ar"
+      - "/sbin/llvm-ar"
+      - "/bin/llvm-ar"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/Compiler/Clang-FindBinUtils.cmake:38 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_RANLIB"
+    description: "Generate index for LLVM archive"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ranlib-21.1"
+      - "llvm-ranlib-21"
+      - "llvm-ranlib21"
+      - "llvm-ranlib"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ranlib-21.1"
+      - "/tmp/tools/root/usr/bin/llvm-ranlib-21.1"
+      - "/home/liiing/.local/bin/llvm-ranlib-21.1"
+      - "/usr/local/sbin/llvm-ranlib-21.1"
+      - "/usr/local/bin/llvm-ranlib-21.1"
+      - "/usr/sbin/llvm-ranlib-21.1"
+      - "/usr/bin/llvm-ranlib-21.1"
+      - "/sbin/llvm-ranlib-21.1"
+      - "/bin/llvm-ranlib-21.1"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ranlib-21"
+      - "/tmp/tools/root/usr/bin/llvm-ranlib-21"
+      - "/home/liiing/.local/bin/llvm-ranlib-21"
+      - "/usr/local/sbin/llvm-ranlib-21"
+      - "/usr/local/bin/llvm-ranlib-21"
+      - "/usr/sbin/llvm-ranlib-21"
+      - "/usr/bin/llvm-ranlib-21"
+      - "/sbin/llvm-ranlib-21"
+      - "/bin/llvm-ranlib-21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ranlib21"
+      - "/tmp/tools/root/usr/bin/llvm-ranlib21"
+      - "/home/liiing/.local/bin/llvm-ranlib21"
+      - "/usr/local/sbin/llvm-ranlib21"
+      - "/usr/local/bin/llvm-ranlib21"
+      - "/usr/sbin/llvm-ranlib21"
+      - "/usr/bin/llvm-ranlib21"
+      - "/sbin/llvm-ranlib21"
+      - "/bin/llvm-ranlib21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/llvm-ranlib"
+      - "/tmp/tools/root/usr/bin/llvm-ranlib"
+      - "/home/liiing/.local/bin/llvm-ranlib"
+      - "/usr/local/sbin/llvm-ranlib"
+      - "/usr/local/bin/llvm-ranlib"
+      - "/usr/sbin/llvm-ranlib"
+      - "/usr/bin/llvm-ranlib"
+      - "/sbin/llvm-ranlib"
+      - "/bin/llvm-ranlib"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/Compiler/Clang-FindBinUtils.cmake:50 (find_program)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS"
+    description: "`clang-scan-deps` dependency scanner"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "clang-scan-deps-21.1"
+      - "clang-scan-deps-21"
+      - "clang-scan-deps21"
+      - "clang-scan-deps"
+      - "clang-scan-deps-21.1"
+      - "clang-scan-deps-21"
+      - "clang-scan-deps21"
+      - "clang-scan-deps"
+    candidate_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/"
+      - "/tmp/tools/root/usr/bin/"
+      - "/home/liiing/.local/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/sbin/"
+      - "/usr/bin/"
+      - "/sbin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps-21.1"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps-21.1"
+      - "/home/liiing/.local/bin/clang-scan-deps-21.1"
+      - "/usr/local/sbin/clang-scan-deps-21.1"
+      - "/usr/local/bin/clang-scan-deps-21.1"
+      - "/usr/sbin/clang-scan-deps-21.1"
+      - "/usr/bin/clang-scan-deps-21.1"
+      - "/sbin/clang-scan-deps-21.1"
+      - "/bin/clang-scan-deps-21.1"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps-21"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps-21"
+      - "/home/liiing/.local/bin/clang-scan-deps-21"
+      - "/usr/local/sbin/clang-scan-deps-21"
+      - "/usr/local/bin/clang-scan-deps-21"
+      - "/usr/sbin/clang-scan-deps-21"
+      - "/usr/bin/clang-scan-deps-21"
+      - "/sbin/clang-scan-deps-21"
+      - "/bin/clang-scan-deps-21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps21"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps21"
+      - "/home/liiing/.local/bin/clang-scan-deps21"
+      - "/usr/local/sbin/clang-scan-deps21"
+      - "/usr/local/bin/clang-scan-deps21"
+      - "/usr/sbin/clang-scan-deps21"
+      - "/usr/bin/clang-scan-deps21"
+      - "/sbin/clang-scan-deps21"
+      - "/bin/clang-scan-deps21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps"
+      - "/home/liiing/.local/bin/clang-scan-deps"
+      - "/usr/local/sbin/clang-scan-deps"
+      - "/usr/local/bin/clang-scan-deps"
+      - "/usr/sbin/clang-scan-deps"
+      - "/usr/bin/clang-scan-deps"
+      - "/sbin/clang-scan-deps"
+      - "/bin/clang-scan-deps"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps-21.1"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps-21.1"
+      - "/home/liiing/.local/bin/clang-scan-deps-21.1"
+      - "/usr/local/sbin/clang-scan-deps-21.1"
+      - "/usr/local/bin/clang-scan-deps-21.1"
+      - "/usr/sbin/clang-scan-deps-21.1"
+      - "/usr/bin/clang-scan-deps-21.1"
+      - "/sbin/clang-scan-deps-21.1"
+      - "/bin/clang-scan-deps-21.1"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps-21"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps-21"
+      - "/home/liiing/.local/bin/clang-scan-deps-21"
+      - "/usr/local/sbin/clang-scan-deps-21"
+      - "/usr/local/bin/clang-scan-deps-21"
+      - "/usr/sbin/clang-scan-deps-21"
+      - "/usr/bin/clang-scan-deps-21"
+      - "/sbin/clang-scan-deps-21"
+      - "/bin/clang-scan-deps-21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps21"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps21"
+      - "/home/liiing/.local/bin/clang-scan-deps21"
+      - "/usr/local/sbin/clang-scan-deps21"
+      - "/usr/local/bin/clang-scan-deps21"
+      - "/usr/sbin/clang-scan-deps21"
+      - "/usr/bin/clang-scan-deps21"
+      - "/sbin/clang-scan-deps21"
+      - "/bin/clang-scan-deps21"
+      - "/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang-scan-deps"
+      - "/tmp/tools/root/usr/bin/clang-scan-deps"
+      - "/home/liiing/.local/bin/clang-scan-deps"
+      - "/usr/local/sbin/clang-scan-deps"
+      - "/usr/local/bin/clang-scan-deps"
+      - "/usr/sbin/clang-scan-deps"
+      - "/usr/bin/clang-scan-deps"
+      - "/sbin/clang-scan-deps"
+      - "/bin/clang-scan-deps"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/tmp/tools/root/usr/bin"
+        - "/home/liiing/.local/bin"
+        - "/home/liiing/.local/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/sbin"
+        - "/usr/bin"
+        - "/sbin"
+        - "/bin"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:123 (try_compile)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-Qg7bHm"
+      binary: "/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-Qg7bHm"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: false
+      stdout: |
+        Change Dir: '/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-Qg7bHm'
+        
+        Run Build Command(s): /home/liiing/.local/lib/python3.14/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /tmp/tools/root/usr/bin/gmake -f Makefile cmTC_f0035/fast
+        /tmp/tools/root/usr/bin/gmake  -f CMakeFiles/cmTC_f0035.dir/build.make CMakeFiles/cmTC_f0035.dir/build
+        gmake[1]: Entering directory '/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-Qg7bHm'
+        Building C object CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o
+        /home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang   -v -MD -MT CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -c /home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeCCompilerABI.c
+        Ubuntu clang version 21.1.8 (6ubuntu1)
+        Target: x86_64-pc-linux-gnu
+        Thread model: posix
+        InstalledDir: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/bin
+        Found candidate GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15
+        Selected GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         (in-process)
+         "/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-Qg7bHm -v -fcoverage-compilation-dir=/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-Qg7bHm -resource-dir /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21 -dependency-file CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /home/liiing/feedback/uid21643/artifacts/toolchain/root -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/local/include -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../x86_64-linux-gnu/include -internal-externc-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu -internal-externc-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/include -internal-externc-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -x c /home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeCCompilerABI.c
+        clang -cc1 version 21.1.8 based upon LLVM 21.1.8 default target x86_64-pc-linux-gnu
+        ignoring nonexistent directory "/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/local/include"
+        ignoring nonexistent directory "/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../x86_64-linux-gnu/include"
+        ignoring nonexistent directory "/home/liiing/feedback/uid21643/artifacts/toolchain/root/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include
+         /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu
+         /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include
+        End of search list.
+        Linking C executable cmTC_f0035
+        /home/liiing/.local/lib/python3.14/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f0035.dir/link.txt --verbose=1
+        Ubuntu clang version 21.1.8 (6ubuntu1)
+        Target: x86_64-pc-linux-gnu
+        Thread model: posix
+        InstalledDir: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/bin
+        Found candidate GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15
+        Selected GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         "/usr/bin/ld" --sysroot=/home/liiing/feedback/uid21643/artifacts/toolchain/root -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_f0035 /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15 -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib -v CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o
+        GNU ld (GNU Binutils for Ubuntu) 2.46
+        /home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang  -v -Wl,-v CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -o cmTC_f0035
+        gmake[1]: Leaving directory '/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-Qg7bHm'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:255 (message)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include]
+          add: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu]
+          add: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include]
+        end of search list found
+        collapse include dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include]
+        collapse include dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu]
+        collapse include dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include]
+        implicit include dirs: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:291 (message)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|wild|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|wild))("|,| |$)]
+        ignore line: [Change Dir: '/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-Qg7bHm']
+        ignore line: []
+        ignore line: [Run Build Command(s): /home/liiing/.local/lib/python3.14/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /tmp/tools/root/usr/bin/gmake -f Makefile cmTC_f0035/fast]
+        ignore line: [/tmp/tools/root/usr/bin/gmake  -f CMakeFiles/cmTC_f0035.dir/build.make CMakeFiles/cmTC_f0035.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-Qg7bHm']
+        ignore line: [Building C object CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang   -v -MD -MT CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -c /home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeCCompilerABI.c]
+        ignore line: [Ubuntu clang version 21.1.8 (6ubuntu1)]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/bin]
+        ignore line: [Found candidate GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15]
+        ignore line: [Selected GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        ignore line: [ (in-process)]
+        ignore line: [ "/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-Qg7bHm -v -fcoverage-compilation-dir=/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-Qg7bHm -resource-dir /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21 -dependency-file CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /home/liiing/feedback/uid21643/artifacts/toolchain/root -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/local/include -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../x86_64-linux-gnu/include -internal-externc-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu -internal-externc-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/include -internal-externc-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -x c /home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeCCompilerABI.c]
+        ignore line: [clang -cc1 version 21.1.8 based upon LLVM 21.1.8 default target x86_64-pc-linux-gnu]
+        ignore line: [ignoring nonexistent directory "/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/local/include"]
+        ignore line: [ignoring nonexistent directory "/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../x86_64-linux-gnu/include"]
+        ignore line: [ignoring nonexistent directory "/home/liiing/feedback/uid21643/artifacts/toolchain/root/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include]
+        ignore line: [ /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu]
+        ignore line: [ /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking C executable cmTC_f0035]
+        ignore line: [/home/liiing/.local/lib/python3.14/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f0035.dir/link.txt --verbose=1]
+        ignore line: [Ubuntu clang version 21.1.8 (6ubuntu1)]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/bin]
+        ignore line: [Found candidate GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15]
+        ignore line: [Selected GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        link line: [ "/usr/bin/ld" --sysroot=/home/liiing/feedback/uid21643/artifacts/toolchain/root -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_f0035 /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15 -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib -v CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o] ==> linker [/usr/bin/ld]
+        link line: [ "/usr/bin/ld" --sysroot=/home/liiing/feedback/uid21643/artifacts/toolchain/root -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_f0035 /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15 -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib -v CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o] ==> linker architecture flags [-m;elf]
+        link line: [ "/usr/bin/ld" --sysroot=/home/liiing/feedback/uid21643/artifacts/toolchain/root -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_f0035 /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15 -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib -v CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o]
+          arg [/usr/bin/ld] ==> ignore
+          arg [--sysroot=/home/liiing/feedback/uid21643/artifacts/toolchain/root] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_f0035] ==> ignore
+          arg [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o] ==> obj [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o]
+          arg [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o] ==> obj [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o]
+          arg [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o] ==> obj [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o]
+          arg [-L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15] ==> dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15]
+          arg [-L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu] ==> dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu]
+          arg [-L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib] ==> dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_f0035.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--no-as-needed] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--no-as-needed] ==> ignore
+          arg [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o] ==> obj [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o]
+          arg [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o] ==> obj [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o]
+        linker tool for 'C': /usr/bin/ld -m;elf
+        collapse library dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15]
+        collapse library dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib]
+        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+        implicit objs: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/Internal/CMakeDetermineLinkerId.cmake:41 (message)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:337 (cmake_determine_linker_id)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    message: |
+      Running the C compiler's linker: "/usr/bin/ld" "-v"
+      GNU ld (GNU Binutils for Ubuntu) 2.46
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:123 (try_compile)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-WM6rG6"
+      binary: "/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-WM6rG6"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: false
+      stdout: |
+        Change Dir: '/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-WM6rG6'
+        
+        Run Build Command(s): /home/liiing/.local/lib/python3.14/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /tmp/tools/root/usr/bin/gmake -f Makefile cmTC_72ebd/fast
+        /tmp/tools/root/usr/bin/gmake  -f CMakeFiles/cmTC_72ebd.dir/build.make CMakeFiles/cmTC_72ebd.dir/build
+        gmake[1]: Entering directory '/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-WM6rG6'
+        Building CXX object CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o
+        /home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang++   -v -MD -MT CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -c /home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeCXXCompilerABI.cpp
+        Ubuntu clang version 21.1.8 (6ubuntu1)
+        Target: x86_64-pc-linux-gnu
+        Thread model: posix
+        InstalledDir: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/bin
+        Found candidate GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15
+        Selected GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         (in-process)
+         "/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-WM6rG6 -v -fcoverage-compilation-dir=/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-WM6rG6 -resource-dir /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21 -dependency-file CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /home/liiing/feedback/uid21643/artifacts/toolchain/root -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15 -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/x86_64-linux-gnu/c++/15 -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/backward -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/local/include -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../x86_64-linux-gnu/include -internal-externc-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu -internal-externc-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/include -internal-externc-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -x c++ /home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeCXXCompilerABI.cpp
+        clang -cc1 version 21.1.8 based upon LLVM 21.1.8 default target x86_64-pc-linux-gnu
+        ignoring nonexistent directory "/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/local/include"
+        ignoring nonexistent directory "/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../x86_64-linux-gnu/include"
+        ignoring nonexistent directory "/home/liiing/feedback/uid21643/artifacts/toolchain/root/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15
+         /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/x86_64-linux-gnu/c++/15
+         /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/backward
+         /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include
+         /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu
+         /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include
+        End of search list.
+        Linking CXX executable cmTC_72ebd
+        /home/liiing/.local/lib/python3.14/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_72ebd.dir/link.txt --verbose=1
+        Ubuntu clang version 21.1.8 (6ubuntu1)
+        Target: x86_64-pc-linux-gnu
+        Thread model: posix
+        InstalledDir: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/bin
+        Found candidate GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15
+        Selected GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         "/usr/bin/ld" --sysroot=/home/liiing/feedback/uid21643/artifacts/toolchain/root -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_72ebd /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15 -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib -v CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o
+        GNU ld (GNU Binutils for Ubuntu) 2.46
+        /home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang++  -v -Wl,-v CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_72ebd
+        gmake[1]: Leaving directory '/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-WM6rG6'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:255 (message)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15]
+          add: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/x86_64-linux-gnu/c++/15]
+          add: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/backward]
+          add: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include]
+          add: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu]
+          add: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include]
+        end of search list found
+        collapse include dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/c++/15]
+        collapse include dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/x86_64-linux-gnu/c++/15] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu/c++/15]
+        collapse include dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/backward] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/c++/15/backward]
+        collapse include dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include]
+        collapse include dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu]
+        collapse include dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include]
+        implicit include dirs: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/c++/15;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu/c++/15;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/c++/15/backward;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:291 (message)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|wild|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|wild))("|,| |$)]
+        ignore line: [Change Dir: '/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-WM6rG6']
+        ignore line: []
+        ignore line: [Run Build Command(s): /home/liiing/.local/lib/python3.14/site-packages/cmake/data/bin/cmake -E env VERBOSE=1 /tmp/tools/root/usr/bin/gmake -f Makefile cmTC_72ebd/fast]
+        ignore line: [/tmp/tools/root/usr/bin/gmake  -f CMakeFiles/cmTC_72ebd.dir/build.make CMakeFiles/cmTC_72ebd.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-WM6rG6']
+        ignore line: [Building CXX object CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang++   -v -MD -MT CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -c /home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Ubuntu clang version 21.1.8 (6ubuntu1)]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/bin]
+        ignore line: [Found candidate GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15]
+        ignore line: [Selected GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        ignore line: [ (in-process)]
+        ignore line: [ "/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-WM6rG6 -v -fcoverage-compilation-dir=/home/liiing/feedback/uid21643/test/build/CMakeFiles/CMakeScratch/TryCompile-WM6rG6 -resource-dir /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21 -dependency-file CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /home/liiing/feedback/uid21643/artifacts/toolchain/root -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15 -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/x86_64-linux-gnu/c++/15 -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/backward -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/local/include -internal-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../x86_64-linux-gnu/include -internal-externc-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu -internal-externc-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/include -internal-externc-isystem /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -x c++ /home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang -cc1 version 21.1.8 based upon LLVM 21.1.8 default target x86_64-pc-linux-gnu]
+        ignore line: [ignoring nonexistent directory "/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/local/include"]
+        ignore line: [ignoring nonexistent directory "/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../x86_64-linux-gnu/include"]
+        ignore line: [ignoring nonexistent directory "/home/liiing/feedback/uid21643/artifacts/toolchain/root/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15]
+        ignore line: [ /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/x86_64-linux-gnu/c++/15]
+        ignore line: [ /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/../../../../include/c++/15/backward]
+        ignore line: [ /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/lib/clang/21/include]
+        ignore line: [ /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include/x86_64-linux-gnu]
+        ignore line: [ /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking CXX executable cmTC_72ebd]
+        ignore line: [/home/liiing/.local/lib/python3.14/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_72ebd.dir/link.txt --verbose=1]
+        ignore line: [Ubuntu clang version 21.1.8 (6ubuntu1)]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/llvm-21/bin]
+        ignore line: [Found candidate GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15]
+        ignore line: [Selected GCC installation: /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        link line: [ "/usr/bin/ld" --sysroot=/home/liiing/feedback/uid21643/artifacts/toolchain/root -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_72ebd /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15 -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib -v CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o] ==> linker [/usr/bin/ld]
+        link line: [ "/usr/bin/ld" --sysroot=/home/liiing/feedback/uid21643/artifacts/toolchain/root -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_72ebd /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15 -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib -v CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o] ==> linker architecture flags [-m;elf]
+        link line: [ "/usr/bin/ld" --sysroot=/home/liiing/feedback/uid21643/artifacts/toolchain/root -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_72ebd /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15 -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu -L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib -v CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o /home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o]
+          arg [/usr/bin/ld] ==> ignore
+          arg [--sysroot=/home/liiing/feedback/uid21643/artifacts/toolchain/root] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_72ebd] ==> ignore
+          arg [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o] ==> obj [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o]
+          arg [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o] ==> obj [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o]
+          arg [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o] ==> obj [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o]
+          arg [-L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15] ==> dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15]
+          arg [-L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu] ==> dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu]
+          arg [-L/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib] ==> dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_72ebd.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o] ==> obj [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o]
+          arg [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o] ==> obj [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o]
+        linker tool for 'CXX': /usr/bin/ld -m;elf
+        collapse library dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15]
+        collapse library dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib] ==> [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/Scrt1.o;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crti.o;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15/crtendS.o;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/gcc/x86_64-linux-gnu/15;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib/x86_64-linux-gnu;/home/liiing/feedback/uid21643/artifacts/toolchain/root/usr/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/Internal/CMakeDetermineLinkerId.cmake:41 (message)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:337 (cmake_determine_linker_id)"
+      - "/home/liiing/.local/lib/python3.14/site-packages/cmake/data/share/cmake-4.4/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    message: |
+      Running the CXX compiler's linker: "/usr/bin/ld" "-v"
+      GNU ld (GNU Binutils for Ubuntu) 2.46
+...

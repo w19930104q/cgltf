@@ -1,0 +1,1 @@
+/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang -fsanitize=address -Xlinker --dependency-file=CMakeFiles/cgltf_test.dir/link.d CMakeFiles/cgltf_test.dir/main.c.o -o cgltf_test

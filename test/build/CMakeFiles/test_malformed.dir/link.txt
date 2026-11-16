@@ -1,0 +1,1 @@
+/home/liiing/feedback/uid21643/artifacts/toolchain/bin/clang -fsanitize=address -Xlinker --dependency-file=CMakeFiles/test_malformed.dir/link.d CMakeFiles/test_malformed.dir/test_malformed.c.o -o test_malformed
