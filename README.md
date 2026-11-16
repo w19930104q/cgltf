@@ -42,6 +42,20 @@ if (result == cgltf_result_success)
 Note that cgltf does not load the contents of extra files such as buffers or images into memory by default. You'll need to read these files yourself using URIs from `data.buffers[]` or `data.images[]` respectively.
 For buffer data, you can alternatively call `cgltf_load_buffers`, which will use `FILE*` APIs to open and read buffer files. This automatically decodes base64 data URIs in buffers. For data URIs in images, you will need to use `cgltf_load_buffer_base64`.
 
+## Usage: Memory limits
+A hostile glTF document can declare an enormous array `count`, buffer `byteLength`, or simply be a very large JSON document. Without bounds, cgltf would try to honor those declarations and exhaust memory. Two optional fields in `cgltf_options` cap this:
+
+```c
+cgltf_options options = {0};
+options.memory_limit  = 64 * 1024 * 1024; /* refuse any allocation once cgltf's tracked total would cross 64 MiB; 0 == no limit */
+options.max_json_size = 16 * 1024 * 1024; /* refuse JSON documents larger than 16 MiB; 0 == no limit */
+```
+
+- `memory_limit` bounds every byte cgltf requests through `memory.alloc_func` while parsing and loading buffers, including arrays sized from glTF `count` values, strings, and decoded base64 / file-backed buffer bytes. The check happens *before* the underlying allocator is called, so an over-limit request never reaches `malloc`.
+- `max_json_size` bounds the size of the JSON document (the whole input for `.gltf`, the JSON chunk for `.glb`).
+- Both default to `0`, meaning unlimited: with a zero-initialized `cgltf_options` the behavior is identical to older versions.
+- When a limit is exceeded the failing call returns `cgltf_result_limit_exceeded`, which is distinct from `cgltf_result_out_of_memory` (the latter is reserved for the allocator itself returning `NULL`). Any partially allocated data is released as on every other error path.
+
 **For more in-depth documentation and a description of the public interface refer to the top of the `cgltf.h` file.**
 
 ## Usage: Writing

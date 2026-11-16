@@ -26,6 +26,9 @@
  * parts of the parsing process. You can use it to force the file type
  * and provide memory allocation as well as file operation callbacks.
  * Should be zero-initialized to trigger default behavior.
+ * The optional `memory_limit` and `max_json_size` fields (both 0 == no
+ * limit) cap how much memory cgltf is allowed to consume; exceeding
+ * either returns `cgltf_result_limit_exceeded`.
  *
  * `cgltf_data` is the struct allocated and filled by `cgltf_parse()`.
  * It generally mirrors the glTF format as described by the spec (see
@@ -128,6 +131,7 @@ typedef enum cgltf_result
 	cgltf_result_io_error,
 	cgltf_result_out_of_memory,
 	cgltf_result_legacy_gltf,
+	cgltf_result_limit_exceeded,
     cgltf_result_max_enum
 } cgltf_result;
 
@@ -149,8 +153,13 @@ typedef struct cgltf_options
 {
 	cgltf_file_type type; /* invalid == auto detect */
 	cgltf_size json_token_count; /* 0 == auto */
+	cgltf_size memory_limit; /* maximum number of bytes that cgltf is allowed to allocate through memory.alloc_func; 0 == no limit */
+	cgltf_size max_json_size; /* maximum size, in bytes, of a JSON document that cgltf is willing to parse; 0 == no limit */
 	cgltf_memory_options memory;
 	cgltf_file_options file;
+	/* Internal bookkeeping for memory_limit; not part of the public API, do not set directly. */
+	cgltf_size memory_allocated;
+	cgltf_size memory_limit_hit; /* non-zero once an allocation was refused because it would exceed memory_limit */
 } cgltf_options;
 
 typedef enum cgltf_buffer_view_type
@@ -1024,18 +1033,45 @@ static void cgltf_default_free(void* user, void* ptr)
 	CGLTF_FREE(ptr);
 }
 
+/*
+ * cgltf_alloc routes every allocation made by the library through one place so that
+ * cgltf_options::memory_limit can be enforced. The counter is monotonic: allocations
+ * made while parsing a document stay alive until cgltf_free (jsmn tokens are the only
+ * transient block), so the cumulative requested size is an upper bound on the live
+ * peak. A limit of 0 (the default) keeps the original, unbounded behavior.
+ */
+static void* cgltf_alloc(cgltf_options* options, cgltf_size size)
+{
+	if (options->memory_limit != 0)
+	{
+		if (size > options->memory_limit || options->memory_allocated > options->memory_limit - size)
+		{
+			options->memory_limit_hit = 1;
+			return NULL;
+		}
+	}
+
+	void* result = options->memory.alloc_func(options->memory.user_data, size);
+	if (result)
+	{
+		options->memory_allocated += size;
+	}
+	return result;
+}
+
 static void* cgltf_calloc(cgltf_options* options, size_t element_size, cgltf_size count)
 {
 	if (SIZE_MAX / element_size < count)
 	{
 		return NULL;
 	}
-	void* result = options->memory.alloc_func(options->memory.user_data, element_size * count);
+	cgltf_size size = element_size * count;
+	void* result = cgltf_alloc(options, size);
 	if (!result)
 	{
 		return NULL;
 	}
-	memset(result, 0, element_size * count);
+	memset(result, 0, size);
 	return result;
 }
 
@@ -1262,6 +1298,18 @@ cgltf_result cgltf_parse_file(const cgltf_options* options, const char* path, cg
 		return result;
 	}
 
+	/* The whole document is held in memory by file_read; enforce both configured limits. */
+	if (options->memory_limit != 0 && file_size > options->memory_limit)
+	{
+		file_release(&options->memory, &options->file, file_data, file_size);
+		return cgltf_result_limit_exceeded;
+	}
+	if (options->max_json_size != 0 && file_size > options->max_json_size)
+	{
+		file_release(&options->memory, &options->file, file_data, file_size);
+		return cgltf_result_limit_exceeded;
+	}
+
 	result = cgltf_parse(options, file_data, file_size, out_data);
 
 	if (result != cgltf_result_success)
@@ -1297,14 +1345,24 @@ static void cgltf_combine_paths(char* path, const char* base, const char* uri)
 
 static cgltf_result cgltf_load_buffer_file(const cgltf_options* options, cgltf_size size, const char* uri, const char* gltf_path, void** out_data)
 {
-	void* (*memory_alloc)(void*, cgltf_size) = options->memory.alloc_func ? options->memory.alloc_func : &cgltf_default_alloc;
 	void (*memory_free)(void*, void*) = options->memory.free_func ? options->memory.free_func : &cgltf_default_free;
 	cgltf_result (*file_read)(const struct cgltf_memory_options*, const struct cgltf_file_options*, const char*, cgltf_size*, void**) = options->file.read ? options->file.read : &cgltf_default_file_read;
 
-	char* path = (char*)memory_alloc(options->memory.user_data, strlen(uri) + strlen(gltf_path) + 1);
+	/* The declared buffer byte length is the size that file_read will allocate; reject it up front. */
+	if (options->memory_limit != 0 && size > options->memory_limit)
+	{
+		return cgltf_result_limit_exceeded;
+	}
+
+	cgltf_options local_options = *options;
+	if (local_options.memory.alloc_func == NULL)
+	{
+		local_options.memory.alloc_func = &cgltf_default_alloc;
+	}
+	char* path = (char*)cgltf_alloc(&local_options, strlen(uri) + strlen(gltf_path) + 1);
 	if (!path)
 	{
-		return cgltf_result_out_of_memory;
+		return local_options.memory_limit_hit ? cgltf_result_limit_exceeded : cgltf_result_out_of_memory;
 	}
 
 	cgltf_combine_paths(path, gltf_path, uri);
@@ -1317,6 +1375,22 @@ static cgltf_result cgltf_load_buffer_file(const cgltf_options* options, cgltf_s
 
 	memory_free(options->memory.user_data, path);
 
+	if (result == cgltf_result_success && options->memory_limit != 0 &&
+		(size > options->memory_limit || size > options->memory_limit - local_options.memory_allocated))
+	{
+		/* A custom file.read may have ignored the requested size; release the block and report the limit. */
+		if (options->file.release)
+		{
+			options->file.release(&options->memory, &options->file, file_data, size);
+		}
+		else
+		{
+			cgltf_default_file_release(&options->memory, &options->file, file_data, size);
+		}
+		*out_data = NULL;
+		return cgltf_result_limit_exceeded;
+	}
+
 	*out_data = (result == cgltf_result_success) ? file_data : NULL;
 
 	return result;
@@ -1324,13 +1398,17 @@ static cgltf_result cgltf_load_buffer_file(const cgltf_options* options, cgltf_s
 
 cgltf_result cgltf_load_buffer_base64(const cgltf_options* options, cgltf_size size, const char* base64, void** out_data)
 {
-	void* (*memory_alloc)(void*, cgltf_size) = options->memory.alloc_func ? options->memory.alloc_func : &cgltf_default_alloc;
 	void (*memory_free)(void*, void*) = options->memory.free_func ? options->memory.free_func : &cgltf_default_free;
 
-	unsigned char* data = (unsigned char*)memory_alloc(options->memory.user_data, size);
+	cgltf_options local_options = *options;
+	if (local_options.memory.alloc_func == NULL)
+	{
+		local_options.memory.alloc_func = &cgltf_default_alloc;
+	}
+	unsigned char* data = (unsigned char*)cgltf_alloc(&local_options, size);
 	if (!data)
 	{
-		return cgltf_result_out_of_memory;
+		return local_options.memory_limit_hit ? cgltf_result_limit_exceeded : cgltf_result_out_of_memory;
 	}
 
 	unsigned int buffer = 0;
@@ -1485,6 +1563,19 @@ cgltf_result cgltf_load_buffers(const cgltf_options* options, cgltf_data* data, 
 	if (options == NULL)
 	{
 		return cgltf_result_invalid_options;
+	}
+
+	/* Reject declared buffer byte lengths against memory_limit before touching any storage. */
+	if (options->memory_limit != 0)
+	{
+		for (cgltf_size i = 0; i < data->buffers_count; ++i)
+		{
+			if (data->buffers[i].data == NULL && data->buffers[i].uri != NULL &&
+				data->buffers[i].size > options->memory_limit)
+			{
+				return cgltf_result_limit_exceeded;
+			}
+		}
 	}
 
 	if (data->buffers_count && data->buffers[0].data == NULL && data->buffers[0].uri == NULL && data->bin)
@@ -2746,6 +2837,7 @@ cgltf_size cgltf_accessor_unpack_indices(const cgltf_accessor* accessor, void* o
 #define CGLTF_ERROR_JSON -1
 #define CGLTF_ERROR_NOMEM -2
 #define CGLTF_ERROR_LEGACY -3
+#define CGLTF_ERROR_LIMIT -4
 
 #define CGLTF_CHECK_TOKTYPE(tok_, type_) if ((tok_).type != (type_)) { return CGLTF_ERROR_JSON; }
 #define CGLTF_CHECK_TOKTYPE_RET(tok_, type_, ret_) if ((tok_).type != (type_)) { return ret_; }
@@ -2863,10 +2955,10 @@ static int cgltf_parse_json_string(cgltf_options* options, jsmntok_t const* toke
 		return CGLTF_ERROR_JSON;
 	}
 	int size = (int)(tokens[i].end - tokens[i].start);
-	char* result = (char*)options->memory.alloc_func(options->memory.user_data, size + 1);
+	char* result = (char*)cgltf_alloc(options, (cgltf_size)size + 1);
 	if (!result)
 	{
-		return CGLTF_ERROR_NOMEM;
+		return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 	}
 	strncpy(result, (const char*)json_chunk + tokens[i].start, size);
 	result[size] = 0;
@@ -2889,7 +2981,7 @@ static int cgltf_parse_json_array(cgltf_options* options, jsmntok_t const* token
 	void* result = cgltf_calloc(options, element_size, size);
 	if (!result)
 	{
-		return CGLTF_ERROR_NOMEM;
+		return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 	}
 	*out_array = result;
 	*out_size = size;
@@ -2986,7 +3078,7 @@ static int cgltf_parse_json_attribute_list(cgltf_options* options, jsmntok_t con
 
 	if (!*out_attributes)
 	{
-		return CGLTF_ERROR_NOMEM;
+		return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 	}
 
 	for (cgltf_size j = 0; j < *out_attributes_count; ++j)
@@ -3021,10 +3113,10 @@ static int cgltf_parse_json_extras(cgltf_options* options, jsmntok_t const* toke
 
 	size_t start = tokens[i].start;
 	size_t size = tokens[i].end - start;
-	out_extras->data = (char*)options->memory.alloc_func(options->memory.user_data, size + 1);
+	out_extras->data = (char*)cgltf_alloc(options, size + 1);
 	if (!out_extras->data)
 	{
-		return CGLTF_ERROR_NOMEM;
+		return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 	}
 	strncpy(out_extras->data, (const char*)json_chunk + start, size);
 	out_extras->data[size] = '\0';
@@ -3043,10 +3135,10 @@ static int cgltf_parse_json_unprocessed_extension(cgltf_options* options, jsmnto
 	}
 
 	cgltf_size name_length = tokens[i].end - tokens[i].start;
-	out_extension->name = (char*)options->memory.alloc_func(options->memory.user_data, name_length + 1);
+	out_extension->name = (char*)cgltf_alloc(options, name_length + 1);
 	if (!out_extension->name)
 	{
-		return CGLTF_ERROR_NOMEM;
+		return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 	}
 	strncpy(out_extension->name, (const char*)json_chunk + tokens[i].start, name_length);
 	out_extension->name[name_length] = 0;
@@ -3054,10 +3146,10 @@ static int cgltf_parse_json_unprocessed_extension(cgltf_options* options, jsmnto
 
 	size_t start = tokens[i].start;
 	size_t size = tokens[i].end - start;
-	out_extension->data = (char*)options->memory.alloc_func(options->memory.user_data, size + 1);
+	out_extension->data = (char*)cgltf_alloc(options, (cgltf_size)size + 1);
 	if (!out_extension->data)
 	{
-		return CGLTF_ERROR_NOMEM;
+		return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 	}
 	strncpy(out_extension->data, (const char*)json_chunk + start, size);
 	out_extension->data[size] = '\0';
@@ -3083,7 +3175,7 @@ static int cgltf_parse_json_unprocessed_extensions(cgltf_options* options, jsmnt
 
 	if (!*out_extensions)
 	{
-		return CGLTF_ERROR_NOMEM;
+		return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 	}
 
 	++i;
@@ -3282,6 +3374,10 @@ static int cgltf_parse_json_material_mappings(cgltf_options* options, jsmntok_t 
 
 			out_prim->mappings_count = mappings_offset;
 			out_prim->mappings = (cgltf_material_mapping*)cgltf_calloc(options, sizeof(cgltf_material_mapping), out_prim->mappings_count);
+			if (!out_prim->mappings)
+			{
+				return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
+			}
 
 			mappings_offset = 0;
 			i = cgltf_parse_json_material_mapping_data(options, tokens, i + 1, json_chunk, out_prim->mappings, &mappings_offset);
@@ -3397,7 +3493,7 @@ static int cgltf_parse_json_primitive(cgltf_options* options, jsmntok_t const* t
 
 			if (!out_prim->extensions)
 			{
-				return CGLTF_ERROR_NOMEM;
+				return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 			}
 
 			++i;
@@ -4659,7 +4755,7 @@ static int cgltf_parse_json_texture(cgltf_options* options, jsmntok_t const* tok
 
 			if (!out_texture->extensions)
 			{
-				return CGLTF_ERROR_NOMEM;
+				return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 			}
 
 			for (int k = 0; k < extensions_size; ++k)
@@ -4850,7 +4946,7 @@ static int cgltf_parse_json_material(cgltf_options* options, jsmntok_t const* to
 
 			if (!out_material->extensions)
 			{
-				return CGLTF_ERROR_NOMEM;
+				return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 			}
 
 			for (int k = 0; k < extensions_size; ++k)
@@ -5221,7 +5317,7 @@ static int cgltf_parse_json_buffer_view(cgltf_options* options, jsmntok_t const*
 
 			if (!out_buffer_view->extensions)
 			{
-				return CGLTF_ERROR_NOMEM;
+				return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 			}
 
 			++i;
@@ -5849,7 +5945,7 @@ static int cgltf_parse_json_node(cgltf_options* options, jsmntok_t const* tokens
 
 			if (!out_node->extensions)
 			{
-				return CGLTF_ERROR_NOMEM;
+				return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 			}
 
 			++i;
@@ -6507,7 +6603,7 @@ static int cgltf_parse_json_root(cgltf_options* options, jsmntok_t const* tokens
 
 			if (!out_data->data_extensions)
 			{
-				return CGLTF_ERROR_NOMEM;
+				return options->memory_limit_hit ? CGLTF_ERROR_LIMIT : CGLTF_ERROR_NOMEM;
 			}
 
 			++i;
@@ -6609,6 +6705,11 @@ cgltf_result cgltf_parse_json(cgltf_options* options, const uint8_t* json_chunk,
 {
 	jsmn_parser parser = { 0, 0, 0 };
 
+	if (options->max_json_size != 0 && size > options->max_json_size)
+	{
+		return cgltf_result_limit_exceeded;
+	}
+
 	if (options->json_token_count == 0)
 	{
 		int token_count = jsmn_parse(&parser, (const char*)json_chunk, size, NULL, 0);
@@ -6621,11 +6722,16 @@ cgltf_result cgltf_parse_json(cgltf_options* options, const uint8_t* json_chunk,
 		options->json_token_count = token_count;
 	}
 
-	jsmntok_t* tokens = (jsmntok_t*)options->memory.alloc_func(options->memory.user_data, sizeof(jsmntok_t) * (options->json_token_count + 1));
+	if (SIZE_MAX / sizeof(jsmntok_t) <= options->json_token_count)
+	{
+		return options->memory_limit_hit ? cgltf_result_limit_exceeded : cgltf_result_out_of_memory;
+	}
+
+	jsmntok_t* tokens = (jsmntok_t*)cgltf_alloc(options, sizeof(jsmntok_t) * (options->json_token_count + 1));
 
 	if (!tokens)
 	{
-		return cgltf_result_out_of_memory;
+		return options->memory_limit_hit ? cgltf_result_limit_exceeded : cgltf_result_out_of_memory;
 	}
 
 	jsmn_init(&parser);
@@ -6642,12 +6748,12 @@ cgltf_result cgltf_parse_json(cgltf_options* options, const uint8_t* json_chunk,
 	// for invalid JSON inputs this makes sure we don't perform out of bound reads of token data
 	tokens[token_count].type = JSMN_UNDEFINED;
 
-	cgltf_data* data = (cgltf_data*)options->memory.alloc_func(options->memory.user_data, sizeof(cgltf_data));
+	cgltf_data* data = (cgltf_data*)cgltf_alloc(options, sizeof(cgltf_data));
 
 	if (!data)
 	{
 		options->memory.free_func(options->memory.user_data, tokens);
-		return cgltf_result_out_of_memory;
+		return options->memory_limit_hit ? cgltf_result_limit_exceeded : cgltf_result_out_of_memory;
 	}
 
 	memset(data, 0, sizeof(cgltf_data));
@@ -6664,6 +6770,7 @@ cgltf_result cgltf_parse_json(cgltf_options* options, const uint8_t* json_chunk,
 
 		switch (i)
 		{
+		case CGLTF_ERROR_LIMIT: return cgltf_result_limit_exceeded;
 		case CGLTF_ERROR_NOMEM: return cgltf_result_out_of_memory;
 		case CGLTF_ERROR_LEGACY: return cgltf_result_legacy_gltf;
 		default: return cgltf_result_invalid_gltf;
