@@ -128,6 +128,7 @@ typedef enum cgltf_result
 	cgltf_result_io_error,
 	cgltf_result_out_of_memory,
 	cgltf_result_legacy_gltf,
+	cgltf_result_unknown_required_extension,
     cgltf_result_max_enum
 } cgltf_result;
 
@@ -436,6 +437,8 @@ typedef struct cgltf_texture_view
 	cgltf_float scale; /* equivalent to strength for occlusion_texture */
 	cgltf_bool has_transform;
 	cgltf_texture_transform transform;
+	cgltf_size extensions_count;
+	cgltf_extension* extensions;
 } cgltf_texture_view;
 
 typedef struct cgltf_pbr_metallic_roughness
@@ -1848,6 +1851,11 @@ static void cgltf_free_extensions(cgltf_data* data, cgltf_extension* extensions,
 	data->memory.free_func(data->memory.user_data, extensions);
 }
 
+static void cgltf_free_texture_view(cgltf_data* data, cgltf_texture_view* texture_view)
+{
+	cgltf_free_extensions(data, texture_view->extensions, texture_view->extensions_count);
+}
+
 void cgltf_free(cgltf_data* data)
 {
 	if (!data)
@@ -1969,6 +1977,30 @@ void cgltf_free(cgltf_data* data)
 	for (cgltf_size i = 0; i < data->materials_count; ++i)
 	{
 		data->memory.free_func(data->memory.user_data, data->materials[i].name);
+
+		cgltf_material* material = &data->materials[i];
+
+		cgltf_free_texture_view(data, &material->pbr_metallic_roughness.base_color_texture);
+		cgltf_free_texture_view(data, &material->pbr_metallic_roughness.metallic_roughness_texture);
+		cgltf_free_texture_view(data, &material->pbr_specular_glossiness.diffuse_texture);
+		cgltf_free_texture_view(data, &material->pbr_specular_glossiness.specular_glossiness_texture);
+		cgltf_free_texture_view(data, &material->clearcoat.clearcoat_texture);
+		cgltf_free_texture_view(data, &material->clearcoat.clearcoat_roughness_texture);
+		cgltf_free_texture_view(data, &material->clearcoat.clearcoat_normal_texture);
+		cgltf_free_texture_view(data, &material->transmission.transmission_texture);
+		cgltf_free_texture_view(data, &material->specular.specular_texture);
+		cgltf_free_texture_view(data, &material->specular.specular_color_texture);
+		cgltf_free_texture_view(data, &material->volume.thickness_texture);
+		cgltf_free_texture_view(data, &material->sheen.sheen_color_texture);
+		cgltf_free_texture_view(data, &material->sheen.sheen_roughness_texture);
+		cgltf_free_texture_view(data, &material->iridescence.iridescence_texture);
+		cgltf_free_texture_view(data, &material->iridescence.iridescence_thickness_texture);
+		cgltf_free_texture_view(data, &material->diffuse_transmission.diffuse_transmission_texture);
+		cgltf_free_texture_view(data, &material->diffuse_transmission.diffuse_transmission_color_texture);
+		cgltf_free_texture_view(data, &material->anisotropy.anisotropy_texture);
+		cgltf_free_texture_view(data, &material->normal_texture);
+		cgltf_free_texture_view(data, &material->occlusion_texture);
+		cgltf_free_texture_view(data, &material->emissive_texture);
 
 		cgltf_free_extensions(data, data->materials[i].extensions, data->materials[i].extensions_count);
 		cgltf_free_extras(data, &data->materials[i].extras);
@@ -2746,6 +2778,7 @@ cgltf_size cgltf_accessor_unpack_indices(const cgltf_accessor* accessor, void* o
 #define CGLTF_ERROR_JSON -1
 #define CGLTF_ERROR_NOMEM -2
 #define CGLTF_ERROR_LEGACY -3
+#define CGLTF_ERROR_UNSUPPORTED_REQUIRED -4
 
 #define CGLTF_CHECK_TOKTYPE(tok_, type_) if ((tok_).type != (type_)) { return CGLTF_ERROR_JSON; }
 #define CGLTF_CHECK_TOKTYPE_RET(tok_, type_, ret_) if ((tok_).type != (type_)) { return ret_; }
@@ -3854,8 +3887,6 @@ static int cgltf_parse_json_texture_transform(jsmntok_t const* tokens, int i, co
 
 static int cgltf_parse_json_texture_view(cgltf_options* options, jsmntok_t const* tokens, int i, const uint8_t* json_chunk, cgltf_texture_view* out_texture_view)
 {
-	(void)options;
-
 	CGLTF_CHECK_TOKTYPE(tokens[i], JSMN_OBJECT);
 
 	out_texture_view->scale = 1.0f;
@@ -3899,6 +3930,14 @@ static int cgltf_parse_json_texture_view(cgltf_options* options, jsmntok_t const
 			CGLTF_CHECK_TOKTYPE(tokens[i], JSMN_OBJECT);
 			int extensions_size = tokens[i].size;
 
+			out_texture_view->extensions_count = 0;
+			out_texture_view->extensions = (cgltf_extension*)cgltf_calloc(options, sizeof(cgltf_extension), extensions_size);
+
+			if (!out_texture_view->extensions)
+			{
+				return CGLTF_ERROR_NOMEM;
+			}
+
 			++i;
 
 			for (int k = 0; k < extensions_size; ++k)
@@ -3912,7 +3951,7 @@ static int cgltf_parse_json_texture_view(cgltf_options* options, jsmntok_t const
 				}
 				else
 				{
-					i = cgltf_skip_json(tokens, i + 1);
+					i = cgltf_parse_json_unprocessed_extension(options, tokens, i, json_chunk, &(out_texture_view->extensions[out_texture_view->extensions_count++]));
 				}
 
 				if (i < 0)
@@ -6414,6 +6453,64 @@ cgltf_size cgltf_calc_size(cgltf_type type, cgltf_component_type component_type)
 
 static int cgltf_fixup_pointers(cgltf_data* out_data);
 
+/* Extensions with dedicated, typed parsing support in cgltf. Any extension
+ * listed here is recognized wherever it may appear; every other extension is
+ * still preserved in its enclosing object's extensions array as raw JSON. */
+static cgltf_bool cgltf_is_extension_supported(const char* name)
+{
+	static const char* const supported_extensions[] = {
+		"EXT_mesh_gpu_instancing",
+		"EXT_meshopt_compression",
+		"EXT_texture_webp",
+		"KHR_draco_mesh_compression",
+		"KHR_lights_punctual",
+		"KHR_materials_anisotropy",
+		"KHR_materials_clearcoat",
+		"KHR_materials_diffuse_transmission",
+		"KHR_materials_dispersion",
+		"KHR_materials_emissive_strength",
+		"KHR_materials_ior",
+		"KHR_materials_iridescence",
+		"KHR_materials_pbrSpecularGlossiness",
+		"KHR_materials_sheen",
+		"KHR_materials_specular",
+		"KHR_materials_transmission",
+		"KHR_materials_unlit",
+		"KHR_materials_variants",
+		"KHR_materials_volume",
+		"KHR_meshopt_compression",
+		"KHR_texture_basisu",
+		"KHR_texture_transform"
+	};
+
+	for (cgltf_size i = 0; i < sizeof(supported_extensions) / sizeof(supported_extensions[0]); ++i)
+	{
+		if (strcmp(name, supported_extensions[i]) == 0)
+		{
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
+/* glTF 2.0 requires loaders to refuse files whose extensionsRequired contains
+ * an extension they do not understand. The dedicated result code lets callers
+ * distinguish this condition from generic malformed-JSON errors; the offending
+ * extension name can be read from the document's extensionsRequired array. */
+static int cgltf_check_required_extensions(cgltf_data* out_data)
+{
+	for (cgltf_size i = 0; i < out_data->extensions_required_count; ++i)
+	{
+		if (!cgltf_is_extension_supported(out_data->extensions_required[i]))
+		{
+			return CGLTF_ERROR_UNSUPPORTED_REQUIRED;
+		}
+	}
+
+	return 0;
+}
+
 static int cgltf_parse_json_root(cgltf_options* options, jsmntok_t const* tokens, int i, const uint8_t* json_chunk, cgltf_data* out_data)
 {
 	CGLTF_CHECK_TOKTYPE(tokens[i], JSMN_OBJECT);
@@ -6602,6 +6699,14 @@ static int cgltf_parse_json_root(cgltf_options* options, jsmntok_t const* tokens
 		}
 	}
 
+	{
+		int required_result = cgltf_check_required_extensions(out_data);
+		if (required_result < 0)
+		{
+			return required_result;
+		}
+	}
+
 	return i;
 }
 
@@ -6666,6 +6771,7 @@ cgltf_result cgltf_parse_json(cgltf_options* options, const uint8_t* json_chunk,
 		{
 		case CGLTF_ERROR_NOMEM: return cgltf_result_out_of_memory;
 		case CGLTF_ERROR_LEGACY: return cgltf_result_legacy_gltf;
+		case CGLTF_ERROR_UNSUPPORTED_REQUIRED: return cgltf_result_unknown_required_extension;
 		default: return cgltf_result_invalid_gltf;
 		}
 	}

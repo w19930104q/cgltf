@@ -118,10 +118,15 @@ cgltf also supports some glTF extensions:
 - KHR_materials_unlit
 - KHR_materials_variants
 - KHR_materials_volume
+- KHR_meshopt_compression
 - KHR_texture_basisu (requires a library like [Binomial Basisu](https://github.com/BinomialLLC/basis_universal) for transcoding to native compressed texture)
 - KHR_texture_transform
 
 cgltf does **not** yet support unlisted extensions. However, unlisted extensions can be accessed via "extensions" member on objects.
+
+Unknown extensions are never discarded: on every object kind (including texture views), an extension without typed parsing support is preserved verbatim in the object's `extensions` array as a `cgltf_extension` holding the extension name and its raw JSON fragment, so applications can process it themselves.
+
+If a file lists an extension in `extensionsRequired` that cgltf does not support, `cgltf_parse` fails with `cgltf_result_unknown_required_extension` and returns no data, as required by the glTF 2.0 specification. Unknown extensions listed only in `extensionsUsed` still parse successfully.
 
 ## Building
 The easiest approach is to integrate the `cgltf.h` header file into your project. If you are unfamiliar with single-file C libraries (also known as stb-style libraries), this is how it goes:
